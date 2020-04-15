@@ -1,0 +1,125 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.App-header {
+  background: #7F00FF; /* fallback for old browsers */
+  background: linear-gradient(to right, #E100FF, #7F00FF);
+  height: 150px;
+  padding: 20px;
+  padding-top: 10px;
+  color: white;
+  font-size: 40px;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.data-table{
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin: 0;
+  margin-top: 20px;
+  font-family: Yahoo Sans Finance,Helvetica Neue,Arial,sans-serif!important;
+}
+.data-row{
+  color: #464e56;
+  border-bottom-color: #e6eaef;
+  border-right-width: 0;
+  border-left-width: 0;
+  border-top-width: 0;
+  border-bottom-width: 1px;
+  border-style: solid;
+}
+.data-header{
+  vertical-align: middle;
+  text-align: left;
+  padding-bottom: 5px!important;
+  padding-top: 5px!important;
+  padding-right: 10px;
+  padding-left: 10px;
+  font-size: 11px;
+  background-color: #fff;
+  font-weight: 400!important;
+  font-family: Yahoo Sans Finance,Helvetica Neue,Arial,sans-serif!important;
+}
+.data-body{
+  display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+    text-align: left;
+    color: #000;
+    font-family: Yahoo Sans Finance,Helvetica Neue,Arial,sans-serif!important;
+}
+.data-body-row{
+  height: 32px;
+  background-color: #fff;
+  border-bottom-color: #e6eaef;
+  border-right-width: 0;
+    border-left-width: 0;
+    border-top-width: 0;
+  border-bottom-width: 1px;
+  border-style: solid;
+}
+.data-body-data{
+  white-space: nowrap;
+  vertical-align: middle;
+  text-align: left!important;
+  position: sticky;
+  padding-right: 10px;
+  padding-left: 6px;
+  min-width: 90px;
+  font-size: 13px;
+  background-color: #fff;
+}
+.data-body-img{
+  width: 20px;
+  margin-right: 5px;
+  height: 20px;
+  border-style: none;
+  vertical-align: bottom;
+}
+.data-body-a{
+  font-weight: 600;
+  color: #0081f2;
+  text-decoration: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+.data-body-td{
+  vertical-align: middle;
+  text-align: left;
+  padding-right: 10px;
+  padding-left: 10px;
+  font-size: 13px;
+  padding: 0;
+}
+.data-body-td1{ 
+  font-weight: 600;  
+}
+.data-body-div{
+  width: 3px;
+  position: absolute;
+  pointer-events: none;
+  padding-right: 5px;
+  left: 100%;
+  top: 0;
+  height: 100%;
+  background: linear-gradient(90deg,rgba(171,181,186,.3),transparent);
+  display: block;
+}
