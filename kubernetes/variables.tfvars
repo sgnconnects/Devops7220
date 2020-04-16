@@ -1,0 +1,1 @@
+scraper_image = "cyrilsebastian1811/devops7220-scraper"

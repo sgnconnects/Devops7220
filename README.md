@@ -1,1 +1,1 @@
-<img src="cron-format.png">
+<img src="images/cron-format.png">
