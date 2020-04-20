@@ -1,0 +1,14 @@
+.Footer {    
+    width: 100%;    
+    display: flex;
+    justify-content: center;    
+    background-color:orange;
+    color: #141414;
+   }
+@media only screen and (max-device-width: 480px) {
+    .Footer{
+      width: 103%;
+      font-size: 140%;     
+      position: relative;
+    }
+      }
