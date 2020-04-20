@@ -17,3 +17,8 @@ docker logs devops7220-api
 
 ## system prune
 docker system prune -a -f
+
+## Running the app localy
+export MONGODB_USR=<mongodb_username> 
+export MONGODB_PWD=<mongodb_password>
+python3 backend.py

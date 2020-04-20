@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request, Response
+from flask import Flask, jsonify, request, Response, url_for, redirect
 import pymongo
 from uuid import UUID
 import os
@@ -24,6 +24,10 @@ collection = db.crypto_currencies
 
 
 # API
+@app.route('/')
+def root():
+    return redirect(url_for('coins'))
+
 @app.route('/health')
 def health():
     return jsonify(None), 200
@@ -46,27 +50,27 @@ def coins():
     return jsonify(result), status_code
 
 
-@app.route('/coin/<coin_id>')
+@app.route('/coins/<coin_id>')
 def get_coin(coin_id):
     start = time.time()
-    graphs['c'].labels(method='get', endpoint='/coin/<coin_id>').inc()
+    graphs['c'].labels(method='get', endpoint='/coins/'+coin_id).inc()
     status_code = None
 
     try:
         result = collection.find_one({"_id": UUID(coin_id)})
         status_code = 200
     except Exception as e:
-        result = {"error": e}
+        result = {"error": str(e)}
         status_code = 400
 
     end = time.time()
-    graphs['h'].labels(method='get', endpoint='/coin/'+coin_id).observe(end - start)
+    graphs['h'].labels(method='get', endpoint='/coins/'+coin_id).observe(end - start)
     return jsonify(result), status_code
 
 @app.route("/metrics")
 def requests_count():
     res = []
-    for k,v in graphs.items():
+    for v in graphs.items():
         res.append(prometheus_client.generate_latest(v))
 
     return Response(res, mimetype="text/plain")
