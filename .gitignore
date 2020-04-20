@@ -1,6 +1,7 @@
 .idea
-venv
+**/venv
 **/COMMAND.md
+**/node_modules
 **/.terraform
 **/terraform.tfstate
 **/.terraform.tfstate.lock.info
