@@ -4,13 +4,6 @@ resource "kubernetes_namespace" "ui" {
   }
 }
 
-data "kubernetes_service" "api-service-info" {
-  metadata {
-    name = "api-service-info"
-    namespace = var.api_namespace
-  }
-}
-
 resource "kubernetes_config_map" "api-host" {
   depends_on = [
     kubernetes_namespace.ui
@@ -25,11 +18,14 @@ resource "kubernetes_config_map" "api-host" {
   }
 
   data = {
-    api_host = "http://${data.kubernetes_service.api-service-info.load_balancer_ingress.0.hostname}:${data.kubernetes_service.api-service-info.spec.port.port}"
+    REACT_APP_API_HOST = "${var.api_host}"
   }
 }
 
 resource "kubernetes_deployment" "ui-deployment" {
+  depends_on = [
+    kubernetes_config_map.api-host
+  ]
 
   metadata {
     name      = "ui-deployment"
@@ -60,25 +56,44 @@ resource "kubernetes_deployment" "ui-deployment" {
         labels = {
           app = "devops7220-final-ui"
         }
-        annotations = {
-          "prometheus.io/scrape" = "true"
-          "prometheus.io/path"   = "/metrics"
-          "prometheus.io/port"   = "3000"
-        }
+        # annotations = {
+        #   "prometheus.io/scrape" = "true"
+        #   "prometheus.io/path"   = "/metrics"
+        #   "prometheus.io/port"   = "3000"
+        # }
       }
 
       spec {
+
+        affinity {
+          pod_anti_affinity {
+            preferred_during_scheduling_ignored_during_execution {
+              weight = 100
+              pod_affinity_term {
+                label_selector {
+                  match_expressions {
+                    key      = "app"
+                    operator = "In"
+                    values   = ["devops7220-final-ui"]
+                  }
+                }
+                topology_key = "failure-domain.beta.kubernetes.io/zone"
+              }
+            }
+          }
+        }
+
         container {
           image = var.ui_image
           name  = "ui-container"
           resources {
             limits {
-              cpu    = "100m"
-              memory = "100Mi"
+              cpu    = "200m"
+              memory = "200Mi"
             }
             requests {
-              cpu    = "50m"
-              memory = "50Mi"
+              cpu    = "100m"
+              memory = "100m"
             }
           }
 
@@ -88,14 +103,23 @@ resource "kubernetes_deployment" "ui-deployment" {
             }
           }
 
-          liveness_probe {
-            http_get {
-              path = "/health"
-              port = 3000
-            }
-            initial_delay_seconds = 10
-            period_seconds        = 100
-          }
+          # liveness_probe {
+          #   http_get {
+          #     path = "/"
+          #     port = 3000
+          #   }
+          #   initial_delay_seconds = 10
+          #   period_seconds        = 100
+          # }
+
+          # readiness_probe {
+          #   http_get {
+          #     path = "/"
+          #     port = 3000
+          #   }
+          #   initial_delay_seconds = 10
+          #   period_seconds        = 100
+          # }
         }
       }
     }
@@ -116,7 +140,6 @@ resource "kubernetes_service" "ui-service" {
   }
   spec {
     selector = {
-      #   app = "${kubernetes_deployment.api.spec[0].selector[0].match_labels.app}"
       app = "devops7220-final-ui"
     }
     port {
