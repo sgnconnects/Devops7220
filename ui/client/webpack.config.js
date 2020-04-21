@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const Dotenv = require('dotenv-webpack');
 
 const SRC_DIR = path.resolve(__dirname, 'src');
 const DIST_DIR = path.resolve(__dirname, 'dist');
@@ -16,6 +17,9 @@ const config = {
             $: "jquery",
             jQuery: "jquery",
             "window.jQuery": "jquery"
+        }),
+        new Dotenv({
+            systemvars: true
         })
     ],
     module: {

@@ -33,6 +33,7 @@ class fetch extends Component {
             const coin_id = url_data.substring(7, url_data.length);
             console.log("coin_id", coin_id);
             axios.get(process.env.REACT_APP_API_HOST + `/coins/${coin_id}`)
+            // axios.get(`/coins/${coin_id}`)
                 .then((response) => {
                     var posts = response.data;
                     this.state.name = posts.name;

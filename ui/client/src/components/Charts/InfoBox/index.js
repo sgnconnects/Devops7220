@@ -18,6 +18,7 @@ class InfoBox extends Component {
       const url_data = window.location.pathname;
       const coin_id = url_data.substring(7, url_data.length);
       axios.get(process.env.REACT_APP_API_HOST + `/coins/${coin_id}`)
+      // axios.get(`/coins/${coin_id}`)
         .then((response) => {
           const posts = response.data;
           this.setState({ posts: posts });

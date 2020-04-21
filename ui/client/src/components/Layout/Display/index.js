@@ -17,6 +17,7 @@ class Display extends React.Component {
   getBlogPost = () => {
     console.log("REACT_APP_API_HOST: ", process.env.REACT_APP_API_HOST);
     axios.get(process.env.REACT_APP_API_HOST + '/coins')
+    // axios.get('/coins')
       .then((response) => {
         const data = response.data;
         this.setState({ posts: data });

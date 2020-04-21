@@ -1,19 +1,19 @@
 FROM node:alpine3.11
 
 ARG REACT_APP_API_HOST=http://localhost:5000
-ARG HOST=0.0.0.0
-ARG PORT=3000
+# ARG HOST=0.0.0.0
+# ARG PORT=3000
 
 # ENV SKIP_PREFLIGHT_CHECK=true
-ENV HOST=$HOST
-ENV PORT=$PORT
+# ENV HOST=$HOST
+# ENV PORT=$PORT
 ENV REACT_APP_API_HOST=$REACT_APP_API_HOST
 
 WORKDIR /app
 COPY /client .
 EXPOSE 3000
-RUN yarn install
-CMD yarn start
+RUN npm install
+CMD npm start
 
 # RUN npm install
 # CMD npm start
