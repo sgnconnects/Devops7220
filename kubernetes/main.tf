@@ -20,6 +20,7 @@ module "addons" {
 # Kubernetes Provider modules
 variable "scraper_image" {}
 variable "api_image" {}
+variable "ui_image" {}
 variable "mongodb_pwd" {}
 variable "schedule" {
   default = "0 0 */1 * *"
@@ -45,13 +46,14 @@ module "api" {
   }
 }
 
-# module "ui" {
-#   source = "./modules/ui"
-#   ui_image = var.ui_image
-#   providers = {
-#     kubernetes = kubernetes
-#   }
-# }
+module "ui" {
+  source = "./modules/ui"
+  ui_image = var.ui_image
+  api_host = "${module.api.api_host}"
+  providers = {
+    kubernetes = kubernetes
+  }
+}
 
 module "metrics" {
   source = "./modules/metrics"

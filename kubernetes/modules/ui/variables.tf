@@ -5,10 +5,7 @@ variable "ui_replicas" {
   type    = number
 }
 
-# variable "api_host" {
-#   default = "http://localhost:5000"
-#   type    = string
-# }
+variable "api_host" {}
 
 variable "api_namespace" {
   default = "api"
