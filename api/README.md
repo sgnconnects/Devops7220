@@ -17,3 +17,6 @@ docker logs devops7220-api
 
 ## system prune
 docker system prune -a -f
+
+## 
+MONGODB_USR="root" MONGODB_PWD="Onepiece181195" python backend.py
