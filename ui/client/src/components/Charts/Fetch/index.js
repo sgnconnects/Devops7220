@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import './fetch.css';
-import LineChart from './LineChart';
-import ToolTip from './ToolTip';
-import InfoBox from './InfoBox';
+import './Fetch.css';
+import LineChart from '../LineChart';
+import ToolTip from '../ToolTip';
+import InfoBox from '../InfoBox';
 import axios from 'axios';
 
 

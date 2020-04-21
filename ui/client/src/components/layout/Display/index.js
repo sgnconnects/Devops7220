@@ -1,8 +1,8 @@
 import React from "react";
 import axios from 'axios';
-import './Home.css';
+import './Display.css';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import fetch from '../charts/fetch';
+// import fetch from '../charts/fetch';
 
 class Display extends React.Component {
   constructor(props) {

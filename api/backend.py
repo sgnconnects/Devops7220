@@ -77,7 +77,7 @@ def get_coin(acronym):
 @app.route("/metrics")
 def requests_count():
     res = []
-    for k,v in graphs.items():
+    for v in graphs.items():
         res.append(prometheus_client.generate_latest(v))
 
     return Response(res, mimetype="text/plain")

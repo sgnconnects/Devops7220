@@ -1,10 +1,10 @@
 import React from 'react';
-import Header from "../header/Header";
-import Footer from "../footer/Footer";
-import Display from "./Display";
+import Header from "../../Header";
+import Footer from "../../Footer";
+import Display from "../Display";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import './Home.css';
-import fetch from '../charts/fetch';
+import fetch from '../../Charts/Fetch';
 class Home extends React.Component {
   constructor(props) {
     super(props);
