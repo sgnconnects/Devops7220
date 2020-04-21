@@ -13,7 +13,7 @@ resource "kubernetes_secret" "mongodb-auth-secrets" {
     name = "mongodb-auth-secrets"
     namespace = var.namespace
     labels = {
-      app = "devops7220-final"
+      app = "devops7220-final-api"
     }
   }
 
@@ -90,7 +90,7 @@ resource "kubernetes_deployment" "api-deployment" {
           liveness_probe {
             http_get {
               path = "/health"
-              port = 80
+              port = 5000
             }
             initial_delay_seconds = 10
             period_seconds        = 100
