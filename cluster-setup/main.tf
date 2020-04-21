@@ -1,5 +1,5 @@
 variable "aws-profile" {
-  default = "dev"
+  default = "default"
   type    = string
 }
 
