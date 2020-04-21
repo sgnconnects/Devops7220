@@ -1,4 +1,5 @@
 # Cluster Configuration
+## Note: before you run this command, please make sure your worker node instance of autoscaling group is in running state
 ```
 kubectl apply -f ./.kube/config-map-aws-auth.yml --kubeconfig=./.kube/config.yml
 ```
@@ -14,10 +15,10 @@ $ terraform init
 1. Individually, with the -var command line option
 2. In variable definitions (.tfvars) files, either specified on the command line or automatically loaded.
 ```
-$ terraform apply -var="scraper_image=<dockerhub_username>/devops7220-scraper" -var="api_image=<dockerhub_username>/devops7220-api" -var="mongodb_pwd=<mongodb_password>" -var="ui_image=<dockerhub_username>/devops7220-ui"
+$ terraform apply -var="scraper_image=<dockerhub_username>/devops7220-scraper" -var="api_image=<dockerhub_username>/devops7220-api" -var="mongodb_pwd=<mongodb_password>" -var="ui_image=<dockerhub_username>/devops7220-ui" -var="schedule=*/1 * * * *"
 ```
 
 ## Destroy
 ```
-$ terraform destroy -var="scraper_image=<dockerhub_username>/devops7220-scraper" -var="api_image=<dockerhub_username>/devops7220-api" -var="mongodb_pwd=<mongodb_password>" -var="ui_image=<dockerhub_username>/devops7220-ui"
+$ terraform destroy -var="scraper_image=<dockerhub_username>/devops7220-scraper" -var="api_image=<dockerhub_username>/devops7220-api" -var="mongodb_pwd=<mongodb_password>" -var="ui_image=<dockerhub_username>/devops7220-ui" -var="schedule=*/1 * * * *"
 ```
