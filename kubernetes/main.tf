@@ -2,19 +2,19 @@ provider "kubernetes" {
   config_path = "./.kube/config.yml"
 }
 
-provider "helm" {
-  kubernetes {
-    config_path = "./.kube/config.yml"
-  }
-}
+# provider "helm" {
+#   kubernetes {
+#     config_path = "./.kube/config.yml"
+#   }
+# }
 
-# Helm Provider modules
-module "addons" {
-  source        = "./modules/addons"
-  providers = {
-    helm = helm
-  }
-}
+# # Helm Provider modules
+# module "addons" {
+#   source        = "./modules/addons"
+#   providers = {
+#     helm = helm
+#   }
+# }
 
 
 # Kubernetes Provider modules
