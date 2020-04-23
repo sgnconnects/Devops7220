@@ -1,8 +1,11 @@
 # Cluster Configuration
 ## Note: before you run this command, please make sure your worker node instance of autoscaling group is in running state
-```
-kubectl apply -f ./.kube/config-map-aws-auth.yml --kubeconfig=./.kube/config.yml
-```
+> ```
+> vi ./.kube/config.yml
+>> replace the value of users[0].user.exec.command from aws to aws2/awscli(depending on what the aws command is on your system) 
+>
+> kubectl apply -f ./.kube/config-map-aws-auth.yml --kubeconfig=./.kube/config.yml
+> ```
 
 # Terraform CMDs
 ## Download Provider
